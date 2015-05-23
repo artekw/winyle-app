@@ -1,1 +1,1 @@
-web: gunicorn vinylman.wsgi
+web: gunicorn vinyl.wsgi
