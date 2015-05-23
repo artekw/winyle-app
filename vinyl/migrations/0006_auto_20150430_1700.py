@@ -14,7 +14,6 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Artist',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=100, verbose_name=b'Wykonawca/Zesp\xc3\xb3\xc5\x82')),
             ],
         ),
