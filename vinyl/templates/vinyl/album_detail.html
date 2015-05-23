@@ -1,0 +1,75 @@
+{% extends 'vinyl/base.html' %}
+
+{% block page_header %}
+        <div class="page-header">
+            <h1>{{ adetail.artist }} - {{ adetail.title }}</h1>
+        </div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+<nav>
+    <ul class="pager">
+        <li class="previous"><a href="javascript:history.go(-1)"><span aria-hidden="true">&larr;</span> Wstecz</a></li>
+    </ul>
+</nav>
+    <div class="col-xs-6 col-md-5">
+        <img src="{{ adetail.cover.url }}" title="Okładka {{ adetail.artist }} - {{ adetail.title }}" alt="Okładka {{ adetail.artist }} - {{ adetail.title }}">
+    </div>
+    <div class="col-xs-6 col-md-5">
+
+        {% if artist.url %}
+            <h3><a href="{{ artist.url }}" alt="Strona wykonawcy" title="Strona wykonawcy" TARGET="blank">{{ adetail.artist }}</a> - {{ adetail.title }}</h3>
+        {% else %}
+            <h3>{{ adetail.artist }} - {{ adetail.title }}</h3>
+        {% endif %}
+
+        <h4>
+        [<a href="http://google.com/search?q={{ adetail.artist}}+{{ adetail.title }}" TARGET="_blank" title="Szukaj w Googlach">Google</a>]
+        [<a href="https://youtube.com/results?search_query={{ adetail.artist}}+{{ adetail.title }}" TARGET="_blank" title="Szukaj na Youtube">Youtube</a>]
+        {% if adetail.catalog_number != "" %} 
+            [<a href="{{ adetail.discog_url }}" TARGET="_blank" title="Album w Discogs">Discogs</a>]
+        {% endif %}
+        </h4>
+        <br>
+        <!-- https://docs.djangoproject.com/en/dev/ref/models/instances/#django.db.models.Model.get_FOO_display-->
+        <h4><b>Stan okładki:</b> {{ adetail.get_cover_condition_display }}</h4>
+        <h4><b>Stan płyty:</b> {{ adetail.get_vinyl_condition_display }}</h4>
+        <br>
+
+        {% if label.url %}
+            <h4><b>Label:</b> <a href="{{ label.url }}" alt="Label" TARGET="_blank" title="Strona wytwórni płytowej">{{ adetail.label }}</a></h4>
+        {% else %}
+            <h4><b>Label:</b> {{ adetail.label }}</h4>
+        {% endif %}
+
+        <h4><b>Numer katalogowy:</b> 
+        {% if adetail.catalog_number %} 
+            {{ adetail.catalog_number }}
+        {% else %} 
+            Brak
+        {% endif %}</h4>
+
+        {% if adetail.first_press %} <h4><b>Pierwsze wydanie (1Press):</b> <span style="color:red">Tak</span></h4> {% endif %}
+
+        <h4><b>Nośnik:</b> {{ adetail.disk }} RPM</h4>
+
+        {% if adetail.notes %}
+            <h4><b>Uwagi:</b> {{ adetail.notes }}</h4>
+        {% endif %}
+
+        {% if user.is_superuser %}
+            <br>
+            <h4><b>Źródło:</b> {{ adetail.source }}</h4>
+            <h4><b>Cena:</b> 
+
+            {% if adetail.price == 0 %} Brak {% else %} {{ adetail.price }} PLN {% endif %}</h4>
+
+        {% endif %}
+
+
+
+        <h4><b>Dodano:</b> {{ adetail.publish_date }}</h4>
+    </div>   
+</div>
+{% endblock content %}

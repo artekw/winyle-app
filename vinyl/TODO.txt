@@ -1,0 +1,12 @@
+TODO.txt
+
+v0.5
+- covery - chyba jest problem z ponownym uploadem okładki
+- deploy na heroku
+
+v0.9
+- logowanie
+- user domyslny i admin
+
+v1.0
+- panel admina - edycja, dodawanie bez udziału panelu django

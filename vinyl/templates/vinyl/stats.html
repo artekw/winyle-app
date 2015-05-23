@@ -1,0 +1,14 @@
+{% extends 'vinyl/base.html' %}
+
+{% block page_header %}
+        <div class="page-header">
+            <h1>Statystyka</h1>
+        </div>
+{% endblock %}
+{% block content %}
+    {% if user.is_superuser %}
+    	<h4><b>Wartość kolekcji:</b> {{ suma.price__sum }} PLN</h4>
+    	<h4><b>Średnia wartość albumu:</b> {{ suma.price__avg|floatformat }} PLN</h4>
+    {% endif %}
+    <h4><b>Ilość albumów:</b> {{ ilosc_albumow }}</h4>
+{% endblock content %}
