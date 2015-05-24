@@ -1,1 +1,1 @@
-web: gunicorn vinylman.wsgi
+web: waitress-serve --port=$PORT vinylman.wsgi:application
