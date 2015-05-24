@@ -3,7 +3,7 @@ Pillow==2.8.1
 argparse==1.2.1
 dj-database-url==0.3.0
 django-bootstrap-form==3.2
-gunicorn==19.3.0
+waitress==0.8.9
 whitenoise==1.0.6
 wsgiref==0.1.2
 psycopg2==2.5.4
