@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'', include('vinyl.urls')),
 ]
 
-# Tylko gdy, serwer deveoperski
+# Tylko gdy, serwer developerski
 if settings.DEBUG:
     urlpatterns += patterns(
         'django.views.static',
