@@ -4,6 +4,7 @@ local_settings.py
 db.sqlite3
 *.py[co]
 cover
+staticfiles
 0001_initial.py
 0002_auto_20150429_2156.py
 0003_auto_20150429_2219.py
